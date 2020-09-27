@@ -11,7 +11,7 @@ public class App {
 		deck.shuffle();
 		
 		//Draws 26 cards for each of 2 players
-		for(int i=0; i <= 52; i++) {
+		for(int i=0; i < 52; i++) {
 			if(i % 2 == 0) {
 				player1.draw(deck);
 			}else {
@@ -20,14 +20,14 @@ public class App {
 		}
 		
 		//Both players cards flips 26 times
-		for(int i=0; i <= 26; i++) {
+		for(int i=0; i < 26; i++) {
 			//card1 = player1, card2 = player2
-			Card card1 = player1.flip();
-			Card card2 = player2.flip();
+			System.out.println(player1.getName() + " has flipped a " + player1.flip());
+			System.out.println(player2.getName() + " has flipped a " + player2.flip());
 			
-			if(card1.getValue() > card2.getValue()) {
+			if(player1.flip().getValue() > player2.flip().getValue()) {
 				player1.incrementScore();
-			}else if(card2.getValue() > card1.getValue()) {
+			}else if(player2.flip().getValue() > player1.flip().getValue()) {
 				player2.incrementScore();
 			}else {
 				//If both players have same value, they both get a point

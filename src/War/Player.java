@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-	private List<Card> hand;
+	private List<Card> hand = new ArrayList<Card>();
 	private int score;
 	private String name;
 	
 	public Player(String name) {
-		this.hand = new ArrayList<Card>();
+		hand = new ArrayList<Card>();
 		this.score = 0;
 		this.name = name;
 		
@@ -55,16 +55,21 @@ public class Player {
 	}
 	
 	public Card flip() {
-		return hand.remove(0);
+		int topCard = 0;
+		if(topCard < hand.size()) {
+			hand.get(topCard);
+			return hand.remove(topCard++);
+		}else {
+			return null;
+		}
 	}
 	
 	public void draw(Deck deck) {
-		Card card = deck.draw();
-		hand.add(card);
+		hand.add(deck.draw());
 	}
 	
 	public void incrementScore() {
-		score += 1;
+		this.score += 1;
 	}
 
 

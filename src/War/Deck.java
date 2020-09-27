@@ -6,18 +6,21 @@ import java.util.Random;
 
 public class Deck {
 	
-	private List<Card> cards;
+	
+	private String name;
+	private String suit;
+	
+	private List<Card> cards = new ArrayList<Card>();
 	
 	public Deck() {
-		cards = new ArrayList<Card>();
 		
-		//Card card = new Card();
-		for(int i=1; i<= 52; i++) {
-			Card card = new Card();
-			card.setValue(i);
-			card.setName(i + "of Hearts");
-			cards.add(card);
+		cards = new ArrayList<Card>();
+		for(int i=1; i < 5; i++) {
+			for(int j=2; j < 15; j++) {
+				cards.add(new Card(i, j));
+			}
 		}
+		
 	}
 	
 	public List<Card> getCards(){
@@ -46,7 +49,13 @@ public class Deck {
 	
 	//2.	draw (removes and returns the top card of the Cards field)
 	public Card draw() {
-		return cards.remove(0);
+		int topCard = 0;
+		if(topCard < cards.size()) {
+			cards.get(topCard);
+			return cards.remove(topCard++);
+		}else {
+			return null;
+		}
 		
 	}
 
