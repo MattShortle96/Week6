@@ -6,22 +6,24 @@ import java.util.Random;
 
 public class Deck {
 	
-	
-	private String name;
-	private String suit;
+	private String name[] = {"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
+	private String suit[] = {"Diamonds", "Hearts", "Clubs", "Spades"};
 	
 	private List<Card> cards = new ArrayList<Card>();
 	
 	public Deck() {
-		
-		cards = new ArrayList<Card>();
-		for(int i=1; i < 5; i++) {
-			for(int j=2; j < 15; j++) {
-				cards.add(new Card(i, j));
+		for(int i=0; i < suit.length; i++) {
+			for(int j=0; j < name.length; j++) {
+				Card card = new Card();
+				card.setValue(i + 2);
+				card.setName(name[j] + " of " + suit[i]);
+				cards.add(card);
 			}
 		}
 		
 	}
+	
+	
 	
 	public List<Card> getCards(){
 		return cards;

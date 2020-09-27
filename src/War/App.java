@@ -19,15 +19,18 @@ public class App {
 			}
 		}
 		
+		player1.describe();
+		player2.describe();
+		
 		//Both players cards flips 26 times
 		for(int i=0; i < 26; i++) {
 			//card1 = player1, card2 = player2
-			System.out.println(player1.getName() + " has flipped a " + player1.flip());
-			System.out.println(player2.getName() + " has flipped a " + player2.flip());
+			Card card1 = player1.flip();
+			Card card2 = player2.flip();
 			
-			if(player1.flip().getValue() > player2.flip().getValue()) {
+			if(card1.getValue() > card2.getValue()) {
 				player1.incrementScore();
-			}else if(player2.flip().getValue() > player1.flip().getValue()) {
+			}else if(card1.getValue() > card2.getValue()) {
 				player2.incrementScore();
 			}else {
 				//If both players have same value, they both get a point
